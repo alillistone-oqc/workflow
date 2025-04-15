@@ -7,6 +7,9 @@ jobs:
   main:
     name: main job
     uses: ./.github/workflows/reusable.yaml
+    concurrency:
+      group: test
+      cancel-in-progress: false
     with:
       experimental: false
 
@@ -22,8 +25,10 @@ jobs:
     name: test job
     uses: ./.github/workflows/reusable.yaml
     needs:
-      - main
-    if: false
+      - middle
+    concurrency:
+      group: test
+      cancel-in-progress: false
     with:
       experimental: true
 
