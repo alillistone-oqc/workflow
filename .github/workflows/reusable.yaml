@@ -2,11 +2,16 @@ name: Reusable workflow
 
 on:
   workflow_call:
+    outputs:
+      mars:
+        value: ${{ jobs.job1.outputs.outcome }}
 
 jobs:
   job1:
     name: First job
     runs-on: ubuntu-latest
+    outputs:
+      outcome: ${{ steps.mars.outcome }}
     steps:
       - name: Hello world
         id: world
