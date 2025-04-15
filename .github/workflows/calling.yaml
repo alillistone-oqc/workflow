@@ -7,3 +7,14 @@ jobs:
   main:
     uses: ./.github/workflows/reusable.yaml
     
+  results:
+    name: results
+    if: always()
+    runs-on: ubuntu-latest
+    needs:
+      - main
+    steps:
+      - name: results
+        run: |
+          echo "the result of step is ${{ needs.main.result }}"
+          
