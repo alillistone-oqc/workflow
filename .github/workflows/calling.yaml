@@ -18,4 +18,4 @@ jobs:
       - name: results
         run: |
           echo "the result of job is ${{ needs.main.result }}"
-          echo "the result of step in the job is ${{ needs.main.outputs.mars || 'skipped' }}"
+          echo "the result of step in the job is ${{ needs.main.outputs.mars }}"
