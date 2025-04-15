@@ -10,12 +10,20 @@ jobs:
     with:
       experimental: false
 
+  middle:
+    needs:
+      - main
+    name: middle
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "middle step"
+
   test:
     name: test job
     uses: ./.github/workflows/reusable.yaml
     needs:
       - main
-    if: always()
+    if: false
     with:
       experimental: true
 
