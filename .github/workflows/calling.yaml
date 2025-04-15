@@ -5,49 +5,5 @@ on:
 
 jobs:
   main:
-    name: main job
     uses: ./.github/workflows/reusable.yaml
-    concurrency:
-      group: test
-      cancel-in-progress: false
-    with:
-      experimental: false
-
-  middle:
-    needs:
-      - main
-    name: middle
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "middle step"
-
-  test:
-    name: test job
-    uses: ./.github/workflows/reusable.yaml
-    needs:
-      - middle
-    concurrency:
-      group: test
-      cancel-in-progress: false
-    with:
-      experimental: true
-
-  outputs:
-    name: Cat outputs
-    runs-on: ubuntu-latest
-    needs:
-      - main
-      - test
-    if: always()
-    steps:
-      - name: Display main output
-        run: |
-          echo "world output is ${{ needs.main.outputs.world-output }} and mars output is ${{ needs.main.outputs.mars-output }}"
-          echo "main output is ${{ needs.main.outputs.job-result }}"
-          echo "main result is ${{ needs.main.result }}"
-
-      - name: Display test output
-        run: |
-          echo "world output is ${{ needs.test.outputs.world-output }} and mars output is ${{ needs.test.outputs.mars-output }}"
-          echo "test output is ${{ needs.test.outputs.job-result }}"
-          echo "test result is ${{ needs.test.result }}"
+    
