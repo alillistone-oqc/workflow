@@ -8,14 +8,15 @@ jobs:
     name: main job
     uses: ./.github/workflows/reusable.yaml
     with:
-      experimental: false
+      experimental: true
 
   test:
     name: test job
     uses: ./.github/workflows/reusable.yaml
-    if: false
+    needs:
+      - main
     with:
-      experimental: true
+      experimental: false
 
   outputs:
     name: Cat outputs
