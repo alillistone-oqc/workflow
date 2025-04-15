@@ -7,7 +7,7 @@ jobs:
   job1:
     name: First job
     runs-on: ubuntu-latest
-    continue-on-error: true
+    # continue-on-error: true
     steps:
       - name: Hello world
         id: world
