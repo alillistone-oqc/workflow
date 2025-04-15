@@ -9,10 +9,10 @@ on:
     outputs:
       world-output:
         value: ${{ jobs.job1.outputs.world }}
-      job-result:
-        value: ${{ jobs.job1.result }}
       mars-output:
         value: ${{ jobs.job1.outputs.mars }}
+      job-result:
+        value: ${{ jobs.job1.result }}
 
       
 
