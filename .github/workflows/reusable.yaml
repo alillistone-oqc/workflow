@@ -1,0 +1,36 @@
+name: Reusable workflow
+
+on:
+  workflow_call:
+    inputs:
+      experimental:
+        type: boolean
+        required: true
+    outputs:
+      world-output:
+        value: ${{ jobs.job1.outputs.world }}
+      job-result:
+        value: ${{ jobs.job1.result }}
+      mars-output:
+        value: ${{ jobs.job1.outputs.mars }}
+
+      
+
+jobs:
+  job1:
+    name: First job
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ inputs.experimental }}
+    outputs:
+      world: ${{ steps.world.outcome }}
+      mars: ${{ steps.mars.outcome }}
+    steps:
+      - name: Hello world
+        id: world
+        run: |
+          echo "hello world"
+      - name: Hello mars
+        id: mars
+        run: |
+          echo "hello mars"
+          exit 1
