@@ -5,6 +5,7 @@ on:
 
 jobs:
   main:
+    if: false
     uses: ./.github/workflows/reusable.yaml
     
   results:
@@ -16,4 +17,4 @@ jobs:
       - name: results
         run: |
           echo "the result of job is ${{ needs.main.result }}"
-          echo "the result of step in the job is ${{ needs.main.outputs.mars }}"
+          echo "the result of step in the job is ${{ needs.main.outputs.mars || 'skipped' }}"
