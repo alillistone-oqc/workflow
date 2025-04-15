@@ -18,10 +18,3 @@ jobs:
         run: |
           echo "hello mars"
           exit 1
-  job2:
-    name: Second job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Hello Saturn
-        run: |
-          echo "Hello saturn"
