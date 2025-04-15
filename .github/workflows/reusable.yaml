@@ -7,13 +7,13 @@ jobs:
   job1:
     name: First job
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Hello world
         id: world
         run: |
           echo "hello world"
       - name: Hello mars
-        continue-on-error: true
         id: mars
         run: |
           echo "hello mars"
